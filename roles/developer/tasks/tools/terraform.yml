@@ -1,0 +1,27 @@
+---
+
+- name: ensure requirements are present
+  apt:
+    name:
+      - gnupg
+      - software-properties-common
+      - curl
+    state: latest
+    update_cache: yes
+
+- name: add hashicorp apt key
+  apt_key:
+    url: https://apt.releases.hashicorp.com/gpg
+    state: present
+
+- name: add hashicorp apt repository
+  apt_repository:
+    repo: deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main
+    state: present
+
+- name: install terraform package
+  apt:
+    name:
+      - terraform
+    state: latest
+    update_cache: yes

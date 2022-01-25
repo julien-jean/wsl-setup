@@ -1,0 +1,10 @@
+---
+
+- name: install terraform
+  include_tasks: tools/terraform.yml
+
+- name: install docker
+  include_tasks: tools/docker.yml
+
+- name: install gh cli
+  include_tasks: tools/gh_cli.yml

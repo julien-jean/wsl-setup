@@ -1,0 +1,10 @@
+---
+
+- name: install required tools
+  hosts: localhost
+  become: yes
+  vars:
+    docker_compose_version: 1.29.2
+    docker_users: ["{{ lookup('env', 'USER') }}"]
+  roles:
+    - developer
