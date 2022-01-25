@@ -5,7 +5,7 @@
 # sudo apt update
 # sudo apt install gh
 
-- name: add guthub cli apt key
+- name: add github cli apt key
   apt_key:
     url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
     state: present
