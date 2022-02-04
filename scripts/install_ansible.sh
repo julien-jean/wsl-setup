@@ -6,7 +6,7 @@ if [ $? == 0 ]; then
     exit 0
 fi
 
-apt update
-apt install -y software-properties-common make
-add-apt-repository --yes --update ppa:ansible/ansible
-apt install -y ansible
+sudo apt update
+sudo apt install -y software-properties-common make
+sudo add-apt-repository --yes --update ppa:ansible/ansible
+sudo apt install -y ansible
