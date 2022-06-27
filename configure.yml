@@ -4,7 +4,7 @@
   hosts: localhost
   become: yes
   vars:
-    docker_compose_version: 2.6.0
+    docker_compose_version: v2.6.1
     docker_users: ["{{ lookup('env', 'USER') }}"]
   roles:
     - developer
