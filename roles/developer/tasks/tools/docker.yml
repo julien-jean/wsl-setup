@@ -40,7 +40,7 @@
     append: yes
     groups: docker
   with_items: "{{ docker_users }}"
-  notify: restart docker daemon
+  #notify: restart docker daemon
 
 # docker compose
 - name: install docker compose
