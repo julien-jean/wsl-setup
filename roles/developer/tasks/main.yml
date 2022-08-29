@@ -1,5 +1,8 @@
 ---
 
+- name: set facts for use later
+  include_tasks: tools/set_facts.yml
+
 - name: install terraform
   include_tasks: tools/terraform.yml
 

@@ -1,0 +1,11 @@
+---
+
+- name: Get Windows Version
+  shell: /mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0//powershell.exe -c "((Get-CimInstance -class Win32_OperatingSystem).version -split '\\.')[0]"
+  register: winver
+  changed_when: false
+  when: winver is undefined
+
+- name: Set fact winver with associated windows version (10, 11, ...)
+  set_fact: 
+    winver: "{{ winver.stdout }}"

@@ -48,3 +48,42 @@
     url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64
     dest: /usr/local/bin/docker-compose
     mode: 0755
+
+## Start docker at startup :
+# Windows 10
+- name: Start docker at startup - Windows 10
+  ansible.builtin.blockinfile:
+    path: "/home/{{ lookup('env', 'USER') }}/.bash_profile"
+    block: |
+      #Start docker at startup
+      wsl.exe -u root -e sh -c "service docker status || service docker start"
+    state: present
+  when: winver == "10"
+
+# Windows 11
+- name: Ensure wsl.conf exists - Windows 11
+  ansible.builtin.copy:
+    content: "[boot]\n"
+    dest: "/etc/wsl.conf"
+    force: no
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  when: winver == "11"
+
+- name: Start docker at startup - Windows 11
+  ansible.builtin.lineinfile:
+    path: "/etc/wsl.conf"
+    line: command = "service docker start"
+    state: present
+    insertafter: '[boot]'
+  when: winver == "11"
+
+- name: Delete old startup for Windows 10 - Windows 11
+  ansible.builtin.blockinfile:
+    path: "/home/{{ lookup('env', 'USER') }}/.bash_profile"
+    block: |
+      #Start docker at startup
+      wsl.exe -u root -e sh -c "service docker status || service docker start"
+    state: absent
+  when: winver == "11"
