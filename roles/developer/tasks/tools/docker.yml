@@ -42,6 +42,11 @@
   with_items: "{{ docker_users }}"
   #notify: restart docker daemon
 
+- name: specify docker daemon.json
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/daemon.json"
+    dest: /etc/docker/daemon.json
+
 # docker compose
 - name: install docker compose
   get_url:
