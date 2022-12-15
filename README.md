@@ -1,3 +1,7 @@
+# Deprecation notice
+
+> :warning: Je ne travaille plus avec le WSL et n'ayant pas le temps de suivre les évolutions, notamment avec l'arrivée de W11, j'archive ce repo.
+
 # wsl-setup
 
 Une configuration de base pour débuter avec le WSL.
